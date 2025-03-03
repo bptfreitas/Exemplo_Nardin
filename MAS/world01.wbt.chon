@@ -1,0 +1,1 @@
+{"id":14,"name":"world","agents":[{"archClass":"jason.Argo","name":"modelo","sourceCode":"/* Initial beliefs and rules */\n\ncharger1( 1.5, 0, 0.05 ).\n\ntarget1( 1.5, 1, 0.05 ).\n\n/* Initial goals */\n\n!start.\n\n/* Plans */\n\n+!start <- .print(\"Never Send A Human To Do A Machine's Job!\")."}],"firmwares":[]}
