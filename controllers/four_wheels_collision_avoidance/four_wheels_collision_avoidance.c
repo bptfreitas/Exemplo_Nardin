@@ -72,8 +72,14 @@ int main(int argc, char **argv) {
     wheels[i] = wb_robot_get_device(wheels_names[i]);
     wb_motor_set_position(wheels[i], INFINITY);
   }
+
+  // initializing battery sensor
+  wb_robot_battery_sensor_enable(100);
+
+
+
   
-  
+  // Openning exogenous port
   int exogenous_port =  open(
     TTY_EXOGENOUS_PORT,
     O_RDWR
@@ -109,10 +115,7 @@ int main(int argc, char **argv) {
       
     }
     
-    javino_received_msg = javino_get_msg( );
-    
-    fprintf(stderr, "\njavino_received_msg: %s", 
-      javino_received_msg ); 
+    javino_received_msg = javino_get_msg( );    
     
     if ( ! strcmp( javino_received_msg , "getPercepts" )  ){
       
@@ -122,14 +125,18 @@ int main(int argc, char **argv) {
       float d2 = wb_distance_sensor_get_value( ds[1] );
         
       // printf("\n %.1f %.1f", d1, d2 );
-
+      // GPS values
       const double *gps_values = wb_gps_get_values(gps);
+
+      // Battery values
+      double battery_level = wb_robot_battery_sensor_get_value();
             
       // Composing percepts message to send to Javino
       int nbytes_written = sprintf(percepts_msg,
-        "dLeft(%.1f);dRight(%.1f);x(%.1f),y(%.1f),z(%.1f)",
+        "dLeft(%.1f);dRight(%.1f);x(%.2f);y(%.2f);z(%.2f);battery(%.1f);",
         d1, d2,
-        gps_values[0], gps_values[1], gps_values[2] );
+        gps_values[0], gps_values[1], gps_values[2], 
+        battery_level);
         
        if ( nbytes_written < 0 ){
        
@@ -140,6 +147,9 @@ int main(int argc, char **argv) {
          // fprintf(stderr, "\n%s\n", percepts_msg);
          
        }
+
+      fprintf(stderr, "\njavino_received_msg: %s", 
+      javino_received_msg );
        
       fprintf(stdout,
         "\nReceived: getPercepts (%d) = %s\n",
@@ -171,10 +181,10 @@ int main(int argc, char **argv) {
     
       fprintf(stdout, 
         "\nReceived: goAhead (%d)\n",
-        reasoning_cycle++ );
+        reasoning_cycle++ );        
     
       left_speed = 1.0;
-      right_speed = 1.0; 
+      right_speed = 1.0;       
       
       wb_motor_set_velocity(wheels[0], left_speed);
       wb_motor_set_velocity(wheels[1], right_speed);
@@ -187,10 +197,10 @@ int main(int argc, char **argv) {
     
       fprintf( stdout,
         "\nReceived: goRight (%d)\n",
-        reasoning_cycle++ );
+        reasoning_cycle++ );  
     
       left_speed = 1.0;
-      right_speed = 0.0;
+      right_speed = 0.0;      
       
       wb_motor_set_velocity(wheels[0], left_speed);
       wb_motor_set_velocity(wheels[1], right_speed);
@@ -204,10 +214,9 @@ int main(int argc, char **argv) {
       fprintf(stdout, 
         "\nReceived: goBack (%d)\n",
         reasoning_cycle++ );
-    
+          
       left_speed = -1.0;
-      right_speed = -1.0;  
-      
+      right_speed = -1.0;        
       
       wb_motor_set_velocity(wheels[0], left_speed);
       wb_motor_set_velocity(wheels[1], right_speed);
@@ -221,10 +230,9 @@ int main(int argc, char **argv) {
       fprintf(stdout, 
         "\nReceived: stop (%d)\n",
         reasoning_cycle++ );
-    
+            
       left_speed = 0;
       right_speed = 0;  
-      
       
       wb_motor_set_velocity(wheels[0], left_speed);
       wb_motor_set_velocity(wheels[1], right_speed);
