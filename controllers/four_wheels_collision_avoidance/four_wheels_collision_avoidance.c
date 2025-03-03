@@ -275,6 +275,8 @@ int main(int argc, char **argv) {
     // write actuators inputs
 
   }
+  
+  close( exogenous_port );
 
   // cleanup the Webots API
   wb_robot_cleanup();
