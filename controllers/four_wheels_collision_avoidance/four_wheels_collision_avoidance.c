@@ -278,6 +278,8 @@ int main(int argc, char **argv) {
   
   close( exogenous_port );
 
+  javino_exit();
+
   // cleanup the Webots API
   wb_robot_cleanup();
   return 0;  // EXIT_SUCCESS
