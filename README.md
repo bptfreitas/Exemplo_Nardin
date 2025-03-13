@@ -47,8 +47,9 @@ For exemple, if you wish to install it in the home folder of the current logged 
 
 2. Enter the folder and run _make_
 
-`cd Exemplo_Nardin`
-`make all`
+```cd Exemplo_Nardin
+make all
+```
 
 This will download and compile the library [_JavinoInC_](https://github.com/chon-group/JavinoInC.git)
 
