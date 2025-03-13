@@ -47,7 +47,8 @@ For exemple, if you wish to install it in the home folder of the current logged 
 
 2. Enter the folder and run _make_
 
-```cd Exemplo_Nardin
+```
+cd Exemplo_Nardin
 make all
 ```
 
