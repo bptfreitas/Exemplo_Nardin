@@ -1,6 +1,8 @@
 
 dirs = $(shell ls controllers)
 
+WEBOTS_HOME=/usr/local/webots
+
 VPATH = JavinoInC/lib
 
 .PHONY: all clean
@@ -10,9 +12,9 @@ libjavino.a:
 	make -C JavinoInC all
 
 all: libjavino.a
-	make WEBOTS_HOME=/usr/local/webots -C controllers/four_wheels_collision_avoidance all
-	make WEBOTS_HOME=/usr/local/webots -C controllers/target all
+	make WEBOTS_HOME="$(WEBOTS_HOME)" -C controllers/four_wheels_collision_avoidance all
+	make WEBOTS_HOME="$(WEBOTS_HOME)" -C controllers/target all
 	
 clean:
-	make WEBOTS_HOME=/usr/local/webots -C controllers/four_wheels_collision_avoidance clean
-	make WEBOTS_HOME=/usr/local/webots -C controllers/target clean
+	make WEBOTS_HOME="$(WEBOTS_HOME)" -C controllers/four_wheels_collision_avoidance clean
+	make WEBOTS_HOME="$(WEBOTS_HOME)" -C controllers/target clean
