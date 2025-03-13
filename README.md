@@ -70,21 +70,21 @@ To run it detached from the CLI instead:
 
 The simulator should open with the following screen:
 
-![Webots first execution](https://github.com/bptfreitas/Exemplo_Nardin/doc/imgs-github/exec_webots-first-execution.png)
+![Webots first execution](https://github.com/bptfreitas/Exemplo_Nardin/blob/39d070d261670e95cb5ce104e7132b04a69a161b/doc/imgs-github/exec_webots-first-execution.png)
 
 2. Start the ChonIDE Embedded MAS IDE
 
 For example, if you are running the Ubuntu 22.04, press the SUPER key and enter on the search "_ChonIDE_".
 
-![Start ChonIDE](https://github.com/bptfreitas/Exemplo_Nardin/doc/imgs-github/exec_start-chonide.png)
+![Start ChonIDE](https://github.com/bptfreitas/Exemplo_Nardin/blob/39d070d261670e95cb5ce104e7132b04a69a161b/doc/imgs-github/exec_start-chonide.png)
 
 3. After logging in, select "Import Project"
 
-![Import Project](https://github.com/bptfreitas/Exemplo_Nardin/doc/imgs-github/exec_import-project.png)
+![Import Project](https://github.com/bptfreitas/Exemplo_Nardin/blob/39d070d261670e95cb5ce104e7132b04a69a161b/doc/imgs-github/exec_import-project.png)
 
 4. Navigate to the folder of the downloaded project and, in the MAS folder, select the corresponding MAS project for ChonIDE.
 
-![Select world project](https://github.com/bptfreitas/Exemplo_Nardin/doc/imgs-github/exec_select-MAS-proj.png)
+![Select world project](https://github.com/bptfreitas/Exemplo_Nardin/blob/39d070d261670e95cb5ce104e7132b04a69a161b/doc/imgs-github/exec_select-MAS-proj.png)
 
 5. Done! You can start programming the MAS for the loaded scenario :) 
 
